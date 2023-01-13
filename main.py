@@ -159,8 +159,9 @@ def btn3Click():
     entrada.place(x=100, y=80)
     texto = str(entrada.get())
     pyperclip.copy(texto)
-    copiado = Label(janela, text='Copiado!')
-    copiado.place(x=220, y=80)
+    lbl_copiado = Label(janela, text="Copiado!")
+    lbl_copiado.place(x=220, y=80)
+    lbl_copiado.after(400,lbl_copiado.destroy)
 
 
 #Gerador de CPF
@@ -191,8 +192,10 @@ def btn4lick():
     entrada1.place(x=100, y=130)
     texto = str(entrada1.get())
     pyperclip.copy(texto)
-    copiado = Label(janela, text='Copiado!')
-    copiado.place(x=220, y=130)
+    lbl_copiado = Label(janela, text="Copiado!")
+    lbl_copiado.place(x=220, y=130)
+    lbl_copiado.after(400, lbl_copiado.destroy)
+
 
 
 
