@@ -70,20 +70,51 @@ def btn4lick():
     lbl_copiado.place(x=220, y=130)
     lbl_copiado.after(400, lbl_copiado.destroy)
 
+def generate_pis(self, pontuacao):
+    # Gerando os 9 primeiros dígitos aleatoriamente
+    pis = str(random.randint(1000000000, 9999999999))
 
+    # Calculando o dígito verificador
+    total = 0
+    weight = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+    for i in range(10):
+        total += int(pis[i]) * weight[i]
+    rest = 11 - (total % 11)
+    if rest == 10 or rest == 11:
+        rest = 0
+    pis += str(rest)
+    #return pis
+    if pontuacao == 1:
+        p = "%s%s%s.%s%s%s%s%s.%s%s-%s" % tuple(pis)
+        return p
+    else:
+        p = "%s%s%s%s%s%s%s%s%s%s%s" % tuple(pis)
+        return p
+
+
+def btn8Click():
+    entrada = Entry(janela)
+    entrada.insert(0, generate_pis(self=0, pontuacao=pontuacaoPis.get()))
+    entrada.place(x=100, y=180)
+    texto = str(entrada.get())
+    pyperclip.copy(texto)
+    lbl_copiado = Label(janela, text="Copiado!")
+    lbl_copiado.place(x=220, y=180)
+    lbl_copiado.after(400,lbl_copiado.destroy)
 
 
 
 
 janela = Tk()
 janela.title('Automação de Rotina')
-janela.geometry('330x200')
+janela.geometry('380x250')
 texto1 = Label(text='Selecione a opção:', fg='red', font=('bold'))
-texto1.place(x=90, y=30)
+texto1.place(x=110, y=30)
 
 #Variaveis Globais
 pontuacaoCnpj = IntVar()
 pontuacaoCpf = IntVar()
+pontuacaoPis = IntVar()
 
 #Entradas padrão em branco para layout da janela
 entrada = Entry(janela)
@@ -91,6 +122,10 @@ entrada.place(x=100, y=80)
 
 entrada1 = Entry(janela)
 entrada1.place(x=100, y=130)
+
+
+entrada2 = Entry(janela)
+entrada2.place(x=100, y=180)
 
 #ChecBox para selecionar opção de geração do CNPJ com ou sem pontuação
 cb_pontuacaoCnpj = Checkbutton(janela, text = "pontuação", variable=pontuacaoCnpj, onvalue=1, offvalue=0)
@@ -100,13 +135,21 @@ cb_pontuacaoCnpj.place(x=100, y=100)
 cb_pontuacaoCpf = Checkbutton(janela, text = "pontuação", variable=pontuacaoCpf, onvalue=1, offvalue=0)
 cb_pontuacaoCpf.place(x=100, y=150)
 
+#ChecBox para selecionar opção de geração do PIS com ou sem pontuação
+cb_pontuacaoCpf = Checkbutton(janela, text = "pontuação", variable=pontuacaoPis, onvalue=1, offvalue=0)
+cb_pontuacaoCpf.place(x=100, y=200)
+
 #Botão para chamada da função de ação de click no botão Gerar CPF
 botao5 = Button(text=' Gerar CPF ', command=lambda: btn4lick(), bg='gray', fg='black')
-botao5.place(x=15, y=120)
+botao5.place(x=15, y=130)
 
 #Botão para chamada da função de ação de click no botão Gerar CNPJ
 botao6 = Button(text='Gerar CNPJ', command=lambda: btn3Click(), bg='gray', fg='black')
 botao6.place(x=15, y=80)
+
+#Botão para chamada da função de ação de click no botão Gerar CNPJ
+botao6 = Button(text='Gerar PIS', command=lambda: btn8Click(), bg='gray', fg='black')
+botao6.place(x=15, y=175)
 
 janela.mainloop()
 
