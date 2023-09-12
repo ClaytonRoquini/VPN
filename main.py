@@ -70,12 +70,14 @@ def abrirChrome():
     pyautogui.click(x=812, y=125)
     # Agenda
     pyautogui.click(x=820, y=167)
-    # Outlook
-    pyautogui.click(x=219, y=1064)
-    # Teams
-    pyautogui.click(x=318, y=1062)
+    # Nova aba 4
+    pyautogui.click(x=748, y=15)
+    # EmailGoogle
+    pyautogui.click(x=1715, y=81)
     #Chat Google
     pyautogui.click(x=365, y=1062)
+    # Gerenciador de VM
+    pyautogui.click(x=269, y=1066)
 
 def all():
     subprocess.Popen('C:\Program Files\Fortinet\FortiClient\FortiClient.exe')
@@ -120,12 +122,14 @@ def all():
     pyautogui.click(x=812, y=125)
     # Agenda
     pyautogui.click(x=820, y=167)
-    # Outlook
-    pyautogui.click(x=219, y=1064)
-    # Teams
-    pyautogui.click(x=318, y=1062)
+    # Nova aba 4
+    pyautogui.click(x=748, y=15)
+    # EmailGoogle
+    pyautogui.click(x=1715, y=81)
     # Chat Google
-    pyautogui.click(x=365, y=1062)
+    pyautogui.click(x=319, y=1061)
+    # Gerenciador de VM
+    pyautogui.click(x=269, y=1066)
 
 
 
